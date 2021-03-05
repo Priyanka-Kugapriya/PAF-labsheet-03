@@ -10,7 +10,7 @@ private Connection connect() {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lab3onedb","root", "");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Item","root", "");
 			
 			//for testing
 			System.out.println("Successfully connected");
@@ -71,7 +71,6 @@ private Connection connect() {
 	}
 	
 	//read items
-	
 	public String readItems() {
 		
 		String output = "";
@@ -138,6 +137,7 @@ private Connection connect() {
 		return output;
 	}
 	
+	//delete items
 	public String removeItem(String Id) {
 		
 		String output = "";
@@ -177,6 +177,8 @@ private Connection connect() {
 		
 	}
 	
+	//update items
+	
 	public String[] getItem(String id ) {
 		
 		String[] item = {"","","",""};
@@ -186,7 +188,7 @@ private Connection connect() {
 			Connection con = connect();
 			
 			if(con == null) {
-				//return "Error while connecting to the database for updating";
+			//return "Error while connecting to the database for updating";
 			}
 			
 			//create a prepared statement

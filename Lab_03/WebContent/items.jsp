@@ -7,13 +7,37 @@ pageEncoding="ISO-8859-1"%>
 	if (request.getParameter("itemCode") != null)
  	{
  		Item itemObj = new Item();
- 		
+ 	
  		String stsMsg = itemObj.insertItem(request.getParameter("itemCode"),
 							 request.getParameter("itemName"),
 							 request.getParameter("itemPrice"),
 							 request.getParameter("itemDesc"));
 		session.setAttribute("statusMsg", stsMsg);
  	}
+
+	//Remove item------------------------------
+	if(request.getParameter("itemID") != null){
+		
+		String  id = request.getParameter("itemID");
+		
+		Item itemObj = new Item();
+		
+		String[] item = itemObj.getItem(id);
+		
+		String code = item[0];
+		String name = item[1];
+		String price = item[2];
+		String desc = item[3];
+		
+		String stsMsg = itemObj.removeItem(id);
+		
+		session.setAttribute("statusMsg",stsMsg);
+		session.setAttribute("code",code);
+		session.setAttribute("name",name);
+		session.setAttribute("price",price);
+		session.setAttribute("desc",desc);
+		
+	}
 %>
 
 <!DOCTYPE html>
