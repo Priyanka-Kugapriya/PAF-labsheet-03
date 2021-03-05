@@ -50,20 +50,33 @@ pageEncoding="ISO-8859-1"%>
 
 		<h1>Items Management</h1>
 		<form method="post" action="items.jsp">
-			 Item code: <input name="itemCode" type="text"><br>
-			 Item name: <input name="itemName" type="text"><br>
-			 Item price: <input name="itemPrice" type="text"><br>
-			 Item description: <input name="itemDesc" type="text"><br>
+			 Item code: <input name="itemCode" type="text"><%if(request.getParameter("btnUpdate") != null){%>
+			 	value='<%= session.getAttribute("code")  %>'
+			 <% }%>><br>
+			 
+			 Item name: <input name="itemName" type="text"><%if(request.getParameter("btnUpdate") != null){%>
+				value="<%= session.getAttribute("name") %>"
+			 <% }%>><br>
+			 
+			 Item price: <input name="itemPrice" type="text"><%if(request.getParameter("btnUpdate") != null){%>
+				value="<%= session.getAttribute("price") %>"
+			 <% }%>><br>
+			 
+			 Item description: <input name="itemDesc" type="text"><%if(request.getParameter("btnUpdate") != null){%>
+				value="<%= session.getAttribute("desc") %>"
+			 <% }%>><br>
+			 
 			 <input name="btnSubmit" type="submit" value="Save">
-		</form>
-		<%
- 				out.print(session.getAttribute("statusMsg"));
-		%>
-		<br>
-		<%
-				 Item itemObj = new Item();
-				 out.print(itemObj.readItems());
-		%>
+			 
+			 </form>
+			 <%
+	 				out.print(session.getAttribute("statusMsg"));
+			 %>
+			 <br>
+			 <%
+					 Item itemObj = new Item();
+					 out.print(itemObj.readItems());
+			 %>
 		
 
 </body>
